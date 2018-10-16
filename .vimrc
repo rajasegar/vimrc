@@ -183,6 +183,10 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'valloric/youcompleteme'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
 call vundle#end()
 
 autocmd vimenter * NERDTree
@@ -225,10 +229,12 @@ let NERDTreeIgnore=['node_modules']
 
 " Ale 
 " Set this. Airline will handle the rest.
+"set statusline+=%#warningmsg#
+"set statusline+=%*
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_solarized_bg='dark'
-set statusline+=%#warningmsg#
-set statusline+=%*
 
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 100
@@ -244,6 +250,14 @@ let g:ale_fixers = {
   \ }
 let g:ale_fix_on_save = 1
 
+
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger = "<nop>" 
+inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>" : "\<CR>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 nnoremap <space>gs :Gstatus<CR> 
 nnoremap <space>gp :Gpush<CR>
 nnoremap <space>gf :Gpull<CR>
@@ -254,6 +268,8 @@ nnoremap <space>pf :vimgrep<Space>
 
 nnoremap <leader>el :lopen<CR>
 nnoremap <leader>ec :lclose<CR>
+
+nnoremap <leader>fed :tabe ~/.vimrc<CR>
 
 
 set clipboard=unnamed
