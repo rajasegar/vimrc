@@ -27,4 +27,17 @@ For MacOS:
 brew install fzf
 ```
 
+### ag
+https://github.com/ggreer/the_silver_searcher
+
+For MacOS:
+```shell
+brew install the_silver_searcher
+```
+
+For Linux:
+```shell
+sudo apt-get install silversearcher-ag
+```
+
 
